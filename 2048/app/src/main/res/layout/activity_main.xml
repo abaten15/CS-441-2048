@@ -30,4 +30,148 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="-1000px"
+        android:clipChildren="false"
+        tools:context="com.imagebuttonprogrammatically_android_examples.com.MainActivity"
+        android:background="">
+
+        <ImageView
+            android:id="@+id/tileone"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="51dp"
+            android:src="@drawable/tile"/>
+
+
+        <ImageView
+            android:id="@+id/tiletwo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="131dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilethree"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="211dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilefour"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="291dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilefive"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="51dp"
+            android:src="@drawable/tile"/>
+
+
+        <ImageView
+            android:id="@+id/tilesix"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="131dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tileseven"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="211dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tileeight"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="291dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilenine"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="51dp"
+            android:src="@drawable/tile"/>
+
+
+        <ImageView
+            android:id="@+id/tileten"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="131dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tileeleven"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="211dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tiletwelve"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="291dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilethirteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="51dp"
+            android:src="@drawable/tile"/>
+
+
+        <ImageView
+            android:id="@+id/tilefourteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="131dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilefifteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="211dp"
+            android:src="@drawable/tile"/>
+
+        <ImageView
+            android:id="@+id/tilesixteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="291dp"
+            android:src="@drawable/tile"/>
+
+    </RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>
