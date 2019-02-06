@@ -1,6 +1,7 @@
 package com.example.cs_441_2048;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class TileTracker {
 
@@ -14,8 +15,8 @@ public class TileTracker {
     }
 
     public void update(MainActivity mainActivity) {
-        ImageView imageView = mainActivity.findViewById(ID);
-        imageView.
+        TextView textView = mainActivity.findViewById(ID);
+        textView.setText("" + value);
     }
 
 }

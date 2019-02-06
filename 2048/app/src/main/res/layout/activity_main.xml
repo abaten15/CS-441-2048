@@ -48,7 +48,6 @@
             android:layout_marginLeft="51dp"
             android:src="@drawable/tile"/>
 
-
         <ImageView
             android:id="@+id/tiletwo"
             android:layout_width="70dp"
@@ -172,6 +171,120 @@
             android:layout_marginLeft="291dp"
             android:src="@drawable/tile"/>
 
+        <TextView
+            android:id="@+id/textone"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="51dp"/>
+
+        <TextView
+            android:id="@+id/texttwo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="131dp"/>
+
+        <TextView
+            android:id="@+id/textthree"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="211dp"/>
+
+        <TextView
+            android:id="@+id/textfour"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="291dp"/>
+
+        <TextView
+            android:id="@+id/textfive"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="51dp"/>
+
+
+        <TextView
+            android:id="@+id/textsix"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="131dp"/>
+
+        <TextView
+            android:id="@+id/textseven"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="211dp"/>
+
+        <TextView
+            android:id="@+id/texteight"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="291dp"/>
+
+        <TextView
+            android:id="@+id/textnine"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="51dp"/>
+
+
+        <TextView
+            android:id="@+id/textten"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="131dp"/>
+
+        <TextView
+            android:id="@+id/texteleven"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="211dp"/>
+
+        <TextView
+            android:id="@+id/texttwelve"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="291dp"/>
+
+        <TextView
+            android:id="@+id/textthirteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="51dp"/>
+
+
+        <TextView
+            android:id="@+id/textfourteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="131dp"/>
+
+        <TextView
+            android:id="@+id/textfifteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="211dp"/>
+
+        <TextView
+            android:id="@+id/textsixteen"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="440dp"
+            android:layout_marginLeft="291dp"/>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
