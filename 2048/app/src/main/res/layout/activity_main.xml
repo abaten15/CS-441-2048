@@ -175,116 +175,148 @@
             android:id="@+id/textone"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="51dp"/>
+            android:layout_marginTop="225dp"
+            android:layout_marginLeft="51dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/texttwo"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="131dp"/>
+            android:layout_marginTop="225dp"
+            android:layout_marginLeft="131dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textthree"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="211dp"/>
+            android:layout_marginTop="225dp"
+            android:layout_marginLeft="211dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textfour"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="291dp"/>
+            android:layout_marginTop="225dp"
+            android:layout_marginLeft="291dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textfive"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginLeft="51dp"/>
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="51dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
 
         <TextView
             android:id="@+id/textsix"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginLeft="131dp"/>
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="131dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textseven"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginLeft="211dp"/>
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="211dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/texteight"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="280dp"
-            android:layout_marginLeft="291dp"/>
+            android:layout_marginTop="305dp"
+            android:layout_marginLeft="291dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textnine"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="360dp"
-            android:layout_marginLeft="51dp"/>
+            android:layout_marginTop="385dp"
+            android:layout_marginLeft="51dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
 
         <TextView
             android:id="@+id/textten"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="360dp"
-            android:layout_marginLeft="131dp"/>
+            android:layout_marginTop="385dp"
+            android:layout_marginLeft="131dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/texteleven"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="360dp"
-            android:layout_marginLeft="211dp"/>
+            android:layout_marginTop="385dp"
+            android:layout_marginLeft="211dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/texttwelve"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="360dp"
-            android:layout_marginLeft="291dp"/>
+            android:layout_marginTop="385dp"
+            android:layout_marginLeft="291dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textthirteen"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="440dp"
-            android:layout_marginLeft="51dp"/>
+            android:layout_marginTop="465dp"
+            android:layout_marginLeft="51dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
 
         <TextView
             android:id="@+id/textfourteen"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="440dp"
-            android:layout_marginLeft="131dp"/>
+            android:layout_marginTop="465dp"
+            android:layout_marginLeft="131dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textfifteen"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="440dp"
-            android:layout_marginLeft="211dp"/>
+            android:layout_marginTop="465dp"
+            android:layout_marginLeft="211dp"
+            android:text="0"
+            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/textsixteen"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="440dp"
-            android:layout_marginLeft="291dp"/>
+            android:layout_marginTop="465dp"
+            android:layout_marginLeft="291dp"
+            android:text="0"
+            android:textAlignment="center"/>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
