@@ -1,11 +1,13 @@
 package com.example.cs_441_2048;
 
+import android.widget.TextView;
+
 import java.util.Random;
 
 public class TileTracker {
 
-    int[][] tileGrid;
-    Random randomValGen;
+    private int[][] tileGrid;
+    private Random randomValGen;
 
     public TileTracker() {
 
@@ -19,6 +21,41 @@ public class TileTracker {
         }
 
         tileGrid[0][0] = 2;
+        tileGrid[0][2] = 4;
+
+        slideRow(0, true);
+
+
+    }
+
+    private void slideRow(int row, boolean right) {
+
+        for (int k = 0; k < 3; k++) {
+            if (right) {
+                int[] tileRow = tileGrid[row];
+                for (int i = 3; i > 0; i--) {
+                    if (tileRow[i] == 0) {
+                        tileRow[i] = tileRow[i - 1];
+                        tileRow[i - 1] = 0;
+                    }
+                }
+            } else {
+                int[] tileRow = tileGrid[row];
+                for (int i = 0; i < 3; i++) {
+                    if (tileRow[i] == 0) {
+                        tileRow[i] = tileRow[i + 1];
+                        tileRow[i + 1] = 0;
+                    }
+                }
+            }
+        }
+
+    }
+
+    public boolean swipeRight() {
+
+
+        return false;
 
     }
 
@@ -66,7 +103,20 @@ public class TileTracker {
     }
 
     public void update(MainActivity mainActivity) {
+        TextView one = mainActivity.findViewById(R.id.textone);
+        TextView two = mainActivity.findViewById(R.id.texttwo);
+        TextView three = mainActivity.findViewById(R.id.textthree);
+        TextView four = mainActivity.findViewById(R.id.textfour);
 
+        one.setText(tileGrid[0][0]);
+        two.setText(tileGrid[0][1]);
+        three.setText(tileGrid[0][2]);
+        four.setText(tileGrid[0][3]);
+
+    }
+
+    public int[][] getTileGrid() {
+        return tileGrid;
     }
 
 }

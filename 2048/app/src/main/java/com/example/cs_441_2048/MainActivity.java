@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +28,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TileTracker tracker = new TileTracker();
 
+        int[][] tileGrid = tracker.getTileGrid();
+        update(tileGrid);
+
+    }
+
+    private void update(int[][] tileGrid) {
+        TextView one = findViewById(R.id.textone);
+        TextView two = findViewById(R.id.texttwo);
+        TextView three = findViewById(R.id.textthree);
+        TextView four = findViewById(R.id.textfour);
+
+        one.setText("" + tileGrid[0][0]);
+        two.setText("" + tileGrid[0][1]);
+        three.setText("" + tileGrid[0][2]);
+        four.setText("" + tileGrid[0][3]);
 
     }
 

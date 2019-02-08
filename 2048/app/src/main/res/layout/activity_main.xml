@@ -30,15 +30,12 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:id="@+id/relativelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="-1000px"
-        android:clipChildren="false"
-        tools:context="com.imagebuttonprogrammatically_android_examples.com.MainActivity"
-        android:background="">
+        android:clipChildren="false">
 
         <ImageView
             android:id="@+id/tileone"
