@@ -20,11 +20,7 @@ public class TileTracker {
             }
         }
 
-        tileGrid[0][0] = 2;
-        tileGrid[0][2] = 4;
-
-        slideRow(0, true);
-
+        addNewRandomValue();
 
     }
 
@@ -52,10 +48,25 @@ public class TileTracker {
 
     }
 
-    public boolean swipeRight() {
+    public void slideCol(int column, boolean down) {
 
-
-        return false;
+        for (int k = 0; k < 3; k++) {
+            if (down) {
+                for (int i = 3; i > 0; i--) {
+                    if (tileGrid[i][column] == 0) {
+                        tileGrid[i][column] = tileGrid[i-1][column];
+                        tileGrid[i-1][column] = 0;
+                    }
+                }
+            } else {
+                for (int i = 0; i < 3; i++) {
+                    if (tileGrid[i][column] == 0) {
+                        tileGrid[i][column] = tileGrid[i+1][column];
+                        tileGrid[i+1][column] = 0;
+                    }
+                }
+            }
+        }
 
     }
 
@@ -87,6 +98,7 @@ public class TileTracker {
                             } else {
                                 tileGrid[i][j] = 2;
                             }
+                            return true;
                         }
                         // Keep indexing grid
                         else {

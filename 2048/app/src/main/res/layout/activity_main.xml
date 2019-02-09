@@ -35,7 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="-1000px"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:id="@+id/tileone"
@@ -314,6 +317,12 @@
             android:layout_marginLeft="291dp"
             android:text="0"
             android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/swipedetector"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
