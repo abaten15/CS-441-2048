@@ -15,6 +15,7 @@ public class GestureHandler extends android.view.GestureDetector.SimpleOnGesture
 
     @Override
     public boolean onDown(MotionEvent event) {
+        mainActivity.swipeDown();
         return false;
     }
 

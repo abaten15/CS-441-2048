@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
@@ -13,6 +14,11 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Button;
+import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
+
+import java.lang.Math;
 
 import org.w3c.dom.Text;
 
@@ -20,42 +26,32 @@ public class MainActivity extends AppCompatActivity {
 
     private TileTracker tracker;
 
+    private static final String TAG = "MAIN_ACTIVITY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-//        final GestureDetector gestureDetector = new GestureDetector(this);
-
-        ImageView swipeDetector = findViewById(R.id.swipedetector);
-        swipeDetector.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch (View v, MotionEvent e) {
-                return ;
-            }
-        });
 
         tracker = new TileTracker();
 
         int[][] tileGrid = tracker.getTileGrid();
         update(tileGrid);
-
+/*
+        Button button = findViewById(R.id.swipedetector);
+        button.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View v, DragEvent event) {
+                Log.v(TAG, "drag");
+                return true;
+            }
+        });
+*/
     }
 
     public void swipeDown() {
         for (int i = 0; i < 4; i++) {
             tracker.slideCol(i, true);
+            tracker.mergeCol(i, true);
         }
     }
 
@@ -77,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         TextView fourteen = findViewById(R.id.textfourteen);
         TextView fifteen = findViewById(R.id.textfifteen);
         TextView sixteen = findViewById(R.id.textsixteen);
+
+        if (one == null) {
+            return;
+        }
 
         one.setText("" + tileGrid[0][0]);
         two.setText("" + tileGrid[0][1]);
@@ -118,4 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void swipeRight() {
+
+    }
+
 }

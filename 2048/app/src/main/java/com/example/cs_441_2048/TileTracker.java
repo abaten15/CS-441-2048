@@ -21,6 +21,36 @@ public class TileTracker {
         }
 
         addNewRandomValue();
+        tileGrid[0][0] = 2;
+        tileGrid[0][1] = 2;
+        slideRow(0, true);
+        mergeRow(0, true);
+
+    }
+
+    private void mergeRow(int row, boolean right) {
+
+        for (int k = 0; k < 3; k++) {
+            if (right) {
+                int[] tileRow = tileGrid[row];
+                for (int i = 3; i > 0; i--) {
+                    if (tileRow[i] == tileRow[i-1]) {
+                        tileRow[i] *= 2;
+                        tileRow[i-1] = 0;
+                        slideRow(row, right);
+                    }
+                }
+            } else {
+                int[] tileRow = tileGrid[row];
+                for (int i = 0; i < 3; i++) {
+                    if (tileRow[i] == tileRow[i+1]) {
+                        tileRow[i] *= 2;
+                        tileRow[i+1] = 0;
+                        slideRow(row, right);
+                    }
+                }
+            }
+        }
 
     }
 
@@ -41,6 +71,30 @@ public class TileTracker {
                     if (tileRow[i] == 0) {
                         tileRow[i] = tileRow[i + 1];
                         tileRow[i + 1] = 0;
+                    }
+                }
+            }
+        }
+
+    }
+
+    public void mergeCol(int column, boolean down) {
+
+        for (int k = 0; k < 3; k++) {
+            if (down) {
+                for (int i = 3; i > 0; i--) {
+                    if (tileGrid[i][column] == tileGrid[i-1][column]) {
+                        tileGrid[i][column] *= 2;
+                        tileGrid[i-1][column] = 0;
+                        slideCol(column, down);
+                    }
+                }
+            } else {
+                for (int i = 0; i < 3; i++) {
+                    if (tileGrid[i][column] == tileGrid[i+1][column]) {
+                        tileGrid[i][column] *= 2;
+                        tileGrid[i+1][column] = 0;
+                        slideCol(column, down);
                     }
                 }
             }
