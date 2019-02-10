@@ -4,6 +4,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.DragEvent;
@@ -28,14 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MAIN_ACTIVITY";
 
+    private GestureDetectorCompat gestureDetectorCompat = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
 
         tracker = new TileTracker();
 
         int[][] tileGrid = tracker.getTileGrid();
         update(tileGrid);
+
 /*
         Button button = findViewById(R.id.swipedetector);
         button.setOnDragListener(new View.OnDragListener() {
@@ -46,6 +52,66 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 */
+
+        GestureHandler gestureHandler = new GestureHandler();
+        gestureHandler.setActivity(this);
+
+        gestureDetectorCompat = new GestureDetectorCompat(this, gestureHandler);
+
+    }
+
+    int lastX = -1;
+    int lastY = -1;
+
+    private static final int SWIPE_THRESHOLD = 100;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            lastX = (int) event.getX();
+            lastY = (int) event.getY();
+        } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+            int x = (int) event.getX();
+            int y = (int) event.getY();
+            int deltaX = x - lastX;
+            int deltaY = y - lastY;
+            Log.v(TAG, "" + x +" " + y + " " + lastX + " " + lastY);
+            Log.v(TAG, "deltaX = " + deltaX + " | deltaY = " + deltaY * -1);
+            if (deltaX > SWIPE_THRESHOLD && deltaX > 0) {
+                Log.v(TAG, "swipe right " + deltaX);
+                swipeRight();
+            } else if (deltaX * -1 > SWIPE_THRESHOLD && deltaX < 0){
+                Log.v(TAG, "swipe left " + deltaX);
+                swipeLeft();
+            }
+            if (deltaY > SWIPE_THRESHOLD && deltaY > 0) {
+                Log.v(TAG, "swipe down " + deltaY);
+                swipeDown();
+            } else if (deltaY - deltaY - deltaY > SWIPE_THRESHOLD && deltaY < 0) {
+                Log.v(TAG, "swipe up" + deltaY);
+                swipeUp();
+            }
+
+        }
+        return true;
+    }
+
+    public void swipeRight() {
+        for (int i = 0; i < 4; i++) {
+            tracker.slideRow(i, true);
+            tracker.mergeRow(i, true);
+        }
+        tracker.addNewRandomValue();
+        update(tracker.getTileGrid());
+    }
+
+    public void swipeLeft() {
+        for (int i = 0; i < 4; i++) {
+            tracker.slideRow(i, false);
+            tracker.mergeRow(i, false);
+        }
+        tracker.addNewRandomValue();
+        update(tracker.getTileGrid());
     }
 
     public void swipeDown() {
@@ -53,6 +119,17 @@ public class MainActivity extends AppCompatActivity {
             tracker.slideCol(i, true);
             tracker.mergeCol(i, true);
         }
+        tracker.addNewRandomValue();
+        update(tracker.getTileGrid());
+    }
+
+    public void swipeUp() {
+        for (int i = 0; i < 4; i++) {
+            tracker.slideCol(i, false);
+            tracker.mergeCol(i, false);
+        }
+        tracker.addNewRandomValue();
+        update(tracker.getTileGrid());
     }
 
     private void update(int[][] tileGrid) {
@@ -117,10 +194,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void swipeRight() {
-
     }
 
 }

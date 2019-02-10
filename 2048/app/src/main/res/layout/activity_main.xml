@@ -30,17 +30,17 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/relativelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="-1000px"
         android:clipChildren="false"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+        tools:context="com.imagebuttonprogrammatically_android_examples.com.MainActivity"
+        android:background="#f0b0b0">
 
-        <ImageView
+    <ImageView
             android:id="@+id/tileone"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -317,12 +317,6 @@
             android:layout_marginLeft="291dp"
             android:text="0"
             android:textAlignment="center"/>
-
-        <Button
-            android:id="@+id/swipedetector"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="test"/>
 
     </RelativeLayout>
 

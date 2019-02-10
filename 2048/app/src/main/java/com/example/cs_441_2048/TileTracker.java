@@ -21,14 +21,16 @@ public class TileTracker {
         }
 
         addNewRandomValue();
+        /*
         tileGrid[0][0] = 2;
         tileGrid[0][1] = 2;
         slideRow(0, true);
         mergeRow(0, true);
+        */
 
     }
 
-    private void mergeRow(int row, boolean right) {
+    public void mergeRow(int row, boolean right) {
 
         for (int k = 0; k < 3; k++) {
             if (right) {
@@ -54,7 +56,7 @@ public class TileTracker {
 
     }
 
-    private void slideRow(int row, boolean right) {
+    public void slideRow(int row, boolean right) {
 
         for (int k = 0; k < 3; k++) {
             if (right) {
