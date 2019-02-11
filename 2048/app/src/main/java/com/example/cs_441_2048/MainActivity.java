@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.v(TAG, "swipe up" + deltaY);
                 swipeUp();
             }
-
         }
         return true;
     }
@@ -171,6 +170,73 @@ public class MainActivity extends AppCompatActivity {
         fourteen.setText("" + tileGrid[3][1]);
         fifteen.setText("" + tileGrid[3][2]);
         sixteen.setText("" + tileGrid[3][3]);
+
+        ImageView imageOne = findViewById(R.id.tileone);
+        updateImage(imageOne, tileGrid[0][0]);
+        ImageView imageTwo = findViewById(R.id.tiletwo);
+        updateImage(imageTwo, tileGrid[0][1]);
+        ImageView imageThree = findViewById(R.id.tilethree);
+        updateImage(imageThree, tileGrid[0][2]);
+        ImageView imageFour = findViewById(R.id.tilefour);
+        updateImage(imageFour, tileGrid[0][3]);
+        ImageView imageFive = findViewById(R.id.tilefive);
+        updateImage(imageFive, tileGrid[1][0]);
+        ImageView imageSix = findViewById(R.id.tilesix);
+        updateImage(imageSix, tileGrid[1][1]);
+        ImageView imageSeven = findViewById(R.id.tileseven);
+        updateImage(imageSeven, tileGrid[1][2]);
+        ImageView imageEight = findViewById(R.id.tileeight);
+        updateImage(imageEight, tileGrid[1][3]);
+        ImageView imageNine = findViewById(R.id.tilenine);
+        updateImage(imageNine, tileGrid[2][0]);
+        ImageView imageTen = findViewById(R.id.tileten);
+        updateImage(imageTen, tileGrid[2][1]);
+        ImageView imageEleven = findViewById(R.id.tileeleven);
+        updateImage(imageEleven, tileGrid[2][2]);
+        ImageView imageTwelve = findViewById(R.id.tiletwelve);
+        updateImage(imageTwelve, tileGrid[2][3]);
+        ImageView imageThirteen = findViewById(R.id.tilethirteen);
+        updateImage(imageThirteen, tileGrid[3][0]);
+        ImageView imageFourteen = findViewById(R.id.tilefourteen);
+        updateImage(imageFourteen, tileGrid[3][1]);
+        ImageView imageFifteen = findViewById(R.id.tilefifteen);
+        updateImage(imageFifteen, tileGrid[3][2]);
+        ImageView imageSixteen = findViewById(R.id.tilesixteen);
+
+        updateImage(imageSixteen, tileGrid[3][3]);
+    }
+
+    private void updateImage(ImageView imageView, int value) {
+        int power = getPower(value);
+        Log.v(TAG, "power - " + power);
+        if (power == -1) {
+            imageView.setImageResource(R.drawable.tile);
+        } else if (power == 0) {
+            imageView.setImageResource(R.drawable.tiletwo);
+        } else if (power == 1) {
+            imageView.setImageResource(R.drawable.tilethree);
+        } else if (power == 2) {
+            imageView.setImageResource((R.drawable.tilefour));
+        }
+    }
+
+    private int getPower(int num) {
+
+        if (num == 0) {
+            return -1;
+        } else if (num == 2) {
+            return 0;
+        } else {
+            int count = 0;
+            while (num != 2) {
+                count++;
+                num /= 2;
+                if (count >= 3) {
+                    count = 0;
+                }
+            }
+            return count;
+        }
 
     }
 
