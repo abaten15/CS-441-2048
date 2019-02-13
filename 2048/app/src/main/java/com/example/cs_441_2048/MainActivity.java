@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
     public void swipeRight() {
         boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            merged = merged ||tracker.slideRow(i, true);
-            merged = merged || tracker.mergeRow(i, true);
+            merged = tracker.slideRow(i, true) || merged;
+            merged = tracker.mergeRow(i, true) || merged;
         }
         if (merged) {
             tracker.addNewRandomValue();
@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
     public void swipeLeft() {
         boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            merged = merged || tracker.slideRow(i, false);
-            merged = merged || tracker.mergeRow(i, false);
+            merged = tracker.slideRow(i, false) || merged;
+            merged = tracker.mergeRow(i, false) || merged;
         }
         if (merged) {
             tracker.addNewRandomValue();
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
     public void swipeDown() {
         boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            merged = merged || tracker.slideCol(i, true);
-            merged = merged || tracker.mergeCol(i, true);
+            merged = tracker.slideCol(i, true) || merged;
+            merged = tracker.mergeCol(i, true) || merged;
         }
         if (merged) {
             tracker.addNewRandomValue();
@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
     public void swipeUp() {
         boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            merged = merged || tracker.slideCol(i, false);
-            merged = merged || tracker.mergeCol(i, false);
+            merged = tracker.slideCol(i, false) || merged;
+            merged = tracker.mergeCol(i, false) || merged;
         }
         if (merged) {
             tracker.addNewRandomValue();
