@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (deltaY > SWIPE_THRESHOLD && deltaY > 0) {
                 Log.v(TAG, "swipe down " + deltaY);
                 swipeDown();
-            } else if (deltaY - deltaY - deltaY > SWIPE_THRESHOLD && deltaY < 0) {
+            } else if (deltaY * -1 > SWIPE_THRESHOLD && deltaY < 0) {
                 Log.v(TAG, "swipe up" + deltaY);
                 swipeUp();
             }
@@ -222,7 +222,15 @@ public class MainActivity extends AppCompatActivity {
         } else if (power == 5) {
             imageView.setImageResource(R.drawable.purpletile);
         } else if (power == 6) {
+            imageView.setImageResource(R.drawable.darkbluetile);
+        } else if (power == 7) {
             imageView.setImageResource(R.drawable.bluetile);
+        } else if (power == 8) {
+            imageView.setImageResource(R.drawable.limegreentile);
+        } else if (power == 9) {
+            imageView.setImageResource(R.drawable.greentile);
+        } else if (power == 10) {
+            imageView.setImageResource(R.drawable.yellowtile);
         }
     }
 
@@ -237,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
             while (num != 2) {
                 count++;
                 num /= 2;
-                if (count >= 7) {
+                if (count >= 11) {
                     count = 0;
                 }
             }
