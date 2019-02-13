@@ -24,33 +24,62 @@ public class TileTracker {
 
     }
 
-    public void mergeRow(int row, boolean right) {
+    public boolean mergeRow(int row, boolean right) {
+
+        boolean canMerge = canMergeRow(row, right);
 
         for (int k = 0; k < 3; k++) {
             if (right) {
                 int[] tileRow = tileGrid[row];
                 for (int i = 3; i > 0; i--) {
-                    if (tileRow[i] == tileRow[i-1]) {
+                    if (tileRow[i] == tileRow[i - 1]) {
                         tileRow[i] *= 2;
-                        tileRow[i-1] = 0;
+                        tileRow[i - 1] = 0;
                         slideRow(row, right);
                     }
                 }
             } else {
                 int[] tileRow = tileGrid[row];
                 for (int i = 0; i < 3; i++) {
-                    if (tileRow[i] == tileRow[i+1]) {
+                    if (tileRow[i] == tileRow[i + 1]) {
                         tileRow[i] *= 2;
-                        tileRow[i+1] = 0;
+                        tileRow[i + 1] = 0;
                         slideRow(row, right);
                     }
                 }
             }
         }
 
+        return canMerge;
+
     }
 
-    public void slideRow(int row, boolean right) {
+    public boolean canMergeRow(int row, boolean right) {
+
+        if (right) {
+            int[] tileRow = tileGrid[row];
+            for (int i = 3; i > 0; i--) {
+                if (tileRow[i] == tileRow[i - 1] &&
+                    tileRow[i] != 0) {
+                    return true;
+                }
+            }
+        } else {
+            int[] tileRow = tileGrid[row];
+            for (int i = 0; i < 3; i++) {
+                if (tileRow[i] == tileRow[i + 1] &&
+                    tileRow[i] != 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean slideRow(int row, boolean right) {
+
+        boolean merged = false;
 
         for (int k = 0; k < 3; k++) {
             if (right) {
@@ -59,6 +88,9 @@ public class TileTracker {
                     if (tileRow[i] == 0) {
                         tileRow[i] = tileRow[i - 1];
                         tileRow[i - 1] = 0;
+                        if (tileRow[i] != 0) {
+                            merged = true;
+                        }
                     }
                 }
             } else {
@@ -67,56 +99,97 @@ public class TileTracker {
                     if (tileRow[i] == 0) {
                         tileRow[i] = tileRow[i + 1];
                         tileRow[i + 1] = 0;
+                        if (tileRow[i] != 0) {
+                            merged = true;
+                        }
                     }
                 }
             }
         }
 
+        return merged;
+
     }
 
-    public void mergeCol(int column, boolean down) {
+    public boolean canMergeCol(int column, boolean down) {
+
+        if (down) {
+            for (int i = 3; i > 0; i--) {
+                if (tileGrid[i][column] == tileGrid[i - 1][column] &&
+                    tileGrid[i][column] != 0) {
+                    return true;
+                }
+            }
+        } else {
+            for (int i = 0; i < 3; i++) {
+                if (tileGrid[i][column] == tileGrid[i + 1][column] &&
+                    tileGrid[i][column] != 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
+    public boolean mergeCol(int column, boolean down) {
+
+        boolean canMerge = canMergeCol(column, down);
 
         for (int k = 0; k < 3; k++) {
             if (down) {
                 for (int i = 3; i > 0; i--) {
-                    if (tileGrid[i][column] == tileGrid[i-1][column]) {
+                    if (tileGrid[i][column] == tileGrid[i - 1][column]) {
                         tileGrid[i][column] *= 2;
-                        tileGrid[i-1][column] = 0;
+                        tileGrid[i - 1][column] = 0;
                         slideCol(column, down);
                     }
                 }
             } else {
                 for (int i = 0; i < 3; i++) {
-                    if (tileGrid[i][column] == tileGrid[i+1][column]) {
+                    if (tileGrid[i][column] == tileGrid[i + 1][column]) {
                         tileGrid[i][column] *= 2;
-                        tileGrid[i+1][column] = 0;
+                        tileGrid[i + 1][column] = 0;
                         slideCol(column, down);
                     }
                 }
             }
         }
 
+        return canMerge;
+
     }
 
-    public void slideCol(int column, boolean down) {
+    public boolean slideCol(int column, boolean down) {
+
+        boolean merged = false;
 
         for (int k = 0; k < 3; k++) {
             if (down) {
                 for (int i = 3; i > 0; i--) {
                     if (tileGrid[i][column] == 0) {
-                        tileGrid[i][column] = tileGrid[i-1][column];
-                        tileGrid[i-1][column] = 0;
+                        tileGrid[i][column] = tileGrid[i - 1][column];
+                        tileGrid[i - 1][column] = 0;
+                        if (tileGrid[i][column] != 0) {
+                            merged = true;
+                        }
                     }
                 }
             } else {
                 for (int i = 0; i < 3; i++) {
                     if (tileGrid[i][column] == 0) {
-                        tileGrid[i][column] = tileGrid[i+1][column];
-                        tileGrid[i+1][column] = 0;
+                        tileGrid[i][column] = tileGrid[i + 1][column];
+                        tileGrid[i + 1][column] = 0;
+                        if (tileGrid[i][column] != 0) {
+                            merged = true;
+                        }
                     }
                 }
             }
         }
+
+        return merged;
 
     }
 

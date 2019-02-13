@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,17 +43,6 @@ public class MainActivity extends AppCompatActivity {
         int[][] tileGrid = tracker.getTileGrid();
         update(tileGrid);
 
-/*
-        Button button = findViewById(R.id.swipedetector);
-        button.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-                Log.v(TAG, "drag");
-                return true;
-            }
-        });
-*/
-
         GestureHandler gestureHandler = new GestureHandler();
         gestureHandler.setActivity(this);
 
@@ -75,19 +65,13 @@ public class MainActivity extends AppCompatActivity {
             int y = (int) event.getY();
             int deltaX = x - lastX;
             int deltaY = y - lastY;
-            Log.v(TAG, "" + x +" " + y + " " + lastX + " " + lastY);
-            Log.v(TAG, "deltaX = " + deltaX + " | deltaY = " + deltaY * -1);
             if (deltaX > SWIPE_THRESHOLD && deltaX > 0) {
-                Log.v(TAG, "swipe right " + deltaX);
                 swipeRight();
             } else if (deltaX * -1 > SWIPE_THRESHOLD && deltaX < 0) {
-                Log.v(TAG, "swipe left " + deltaX);
                 swipeLeft();
             } else if (deltaY > SWIPE_THRESHOLD && deltaY > 0) {
-                Log.v(TAG, "swipe down " + deltaY);
                 swipeDown();
             } else if (deltaY * -1 > SWIPE_THRESHOLD && deltaY < 0) {
-                Log.v(TAG, "swipe up" + deltaY);
                 swipeUp();
             }
         }
@@ -95,38 +79,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void swipeRight() {
+        boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            tracker.slideRow(i, true);
-            tracker.mergeRow(i, true);
+            merged = merged ||tracker.slideRow(i, true);
+            merged = merged || tracker.mergeRow(i, true);
         }
-        tracker.addNewRandomValue();
+        if (merged) {
+            tracker.addNewRandomValue();
+        }
         update(tracker.getTileGrid());
     }
 
     public void swipeLeft() {
+        boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            tracker.slideRow(i, false);
-            tracker.mergeRow(i, false);
+            merged = merged || tracker.slideRow(i, false);
+            merged = merged || tracker.mergeRow(i, false);
         }
-        tracker.addNewRandomValue();
+        if (merged) {
+            tracker.addNewRandomValue();
+        }
         update(tracker.getTileGrid());
     }
 
     public void swipeDown() {
+        boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            tracker.slideCol(i, true);
-            tracker.mergeCol(i, true);
+            merged = merged || tracker.slideCol(i, true);
+            merged = merged || tracker.mergeCol(i, true);
         }
-        tracker.addNewRandomValue();
+        if (merged) {
+            tracker.addNewRandomValue();
+        }
         update(tracker.getTileGrid());
     }
 
     public void swipeUp() {
+        boolean merged = false;
         for (int i = 0; i < 4; i++) {
-            tracker.slideCol(i, false);
-            tracker.mergeCol(i, false);
+            merged = merged || tracker.slideCol(i, false);
+            merged = merged || tracker.mergeCol(i, false);
         }
-        tracker.addNewRandomValue();
+        if (merged) {
+            tracker.addNewRandomValue();
+        }
         update(tracker.getTileGrid());
     }
 
@@ -153,22 +149,22 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        one.setText("" + tileGrid[0][0]);
-        two.setText("" + tileGrid[0][1]);
-        three.setText("" + tileGrid[0][2]);
-        four.setText("" + tileGrid[0][3]);
-        five.setText("" + tileGrid[1][0]);
-        six.setText("" + tileGrid[1][1]);
-        seven.setText("" + tileGrid[1][2]);
-        eight.setText("" + tileGrid[1][3]);
-        nine.setText("" + tileGrid[2][0]);
-        ten.setText("" + tileGrid[2][1]);
-        eleven.setText("" + tileGrid[2][2]);
-        twelve.setText("" + tileGrid[2][3]);
-        thirteen.setText("" + tileGrid[3][0]);
-        fourteen.setText("" + tileGrid[3][1]);
-        fifteen.setText("" + tileGrid[3][2]);
-        sixteen.setText("" + tileGrid[3][3]);
+        updateText(one, tileGrid[0][0]);
+        updateText(two, tileGrid[0][1]);
+        updateText(three, tileGrid[0][2]);
+        updateText(four, tileGrid[0][3]);
+        updateText(five, tileGrid[1][0]);
+        updateText(six, tileGrid[1][1]);
+        updateText(seven, tileGrid[1][2]);
+        updateText(eight, tileGrid[1][3]);
+        updateText(nine, tileGrid[2][0]);
+        updateText(ten, tileGrid[2][1]);
+        updateText(eleven, tileGrid[2][2]);
+        updateText(twelve, tileGrid[2][3]);
+        updateText(thirteen, tileGrid[3][0]);
+        updateText(fourteen, tileGrid[3][1]);
+        updateText(fifteen, tileGrid[3][2]);
+        updateText(sixteen, tileGrid[3][3]);
 
         ImageView imageOne = findViewById(R.id.tileone);
         updateImage(imageOne, tileGrid[0][0]);
@@ -202,11 +198,62 @@ public class MainActivity extends AppCompatActivity {
         updateImage(imageFifteen, tileGrid[3][2]);
         ImageView imageSixteen = findViewById(R.id.tilesixteen);
         updateImage(imageSixteen, tileGrid[3][3]);
+
+        TextView title = findViewById(R.id.title);
+        if (didWin(tileGrid)) {
+            title.setText("You got 2048. You Win!!!");
+            title.setTextSize(20);
+        } else if (didLose(tileGrid)) {
+            title.setText("You are out of moves. You Lose!!!");
+            title.setTextSize(20);
+        } else {
+            title.setText("2048");
+            title.setTextSize(50);
+        }
+
+    }
+
+    private boolean didWin(int[][] tileGrid) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (tileGrid[i][j] == 2048) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean didLose(int[][] tileGrid) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (tileGrid[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if (tracker.canMergeCol(i, true) ||
+                tracker.canMergeCol(i, false) ||
+                tracker.canMergeRow(i, true) ||
+                tracker.canMergeRow(i, false)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void updateText(TextView textView, int value) {
+        textView.setTextSize(16);
+        if (value == 0) {
+            textView.setText("");
+        } else {
+            textView.setText("" + value);
+        }
     }
 
     private void updateImage(ImageView imageView, int value) {
         int power = getPower(value);
-        Log.v(TAG, "power - " + power);
         if (power == -1) {
             imageView.setImageResource(R.drawable.tile);
         } else if (power == 0) {
