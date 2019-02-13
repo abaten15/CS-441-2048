@@ -80,11 +80,10 @@ public class MainActivity extends AppCompatActivity {
             if (deltaX > SWIPE_THRESHOLD && deltaX > 0) {
                 Log.v(TAG, "swipe right " + deltaX);
                 swipeRight();
-            } else if (deltaX * -1 > SWIPE_THRESHOLD && deltaX < 0){
+            } else if (deltaX * -1 > SWIPE_THRESHOLD && deltaX < 0) {
                 Log.v(TAG, "swipe left " + deltaX);
                 swipeLeft();
-            }
-            if (deltaY > SWIPE_THRESHOLD && deltaY > 0) {
+            } else if (deltaY > SWIPE_THRESHOLD && deltaY > 0) {
                 Log.v(TAG, "swipe down " + deltaY);
                 swipeDown();
             } else if (deltaY - deltaY - deltaY > SWIPE_THRESHOLD && deltaY < 0) {
@@ -202,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageFifteen = findViewById(R.id.tilefifteen);
         updateImage(imageFifteen, tileGrid[3][2]);
         ImageView imageSixteen = findViewById(R.id.tilesixteen);
-
         updateImage(imageSixteen, tileGrid[3][3]);
     }
 
@@ -217,6 +215,14 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.tilethree);
         } else if (power == 2) {
             imageView.setImageResource((R.drawable.tilefour));
+        } else if (power == 3) {
+            imageView.setImageResource((R.drawable.redtile));
+        } else if (power == 4) {
+            imageView.setImageResource(R.drawable.violettile);
+        } else if (power == 5) {
+            imageView.setImageResource(R.drawable.purpletile);
+        } else if (power == 6) {
+            imageView.setImageResource(R.drawable.bluetile);
         }
     }
 
@@ -231,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             while (num != 2) {
                 count++;
                 num /= 2;
-                if (count >= 3) {
+                if (count >= 7) {
                     count = 0;
                 }
             }

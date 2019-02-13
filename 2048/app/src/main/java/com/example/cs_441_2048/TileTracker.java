@@ -21,12 +21,6 @@ public class TileTracker {
         }
 
         addNewRandomValue();
-        /*
-        tileGrid[0][0] = 2;
-        tileGrid[0][1] = 2;
-        slideRow(0, true);
-        mergeRow(0, true);
-        */
 
     }
 
@@ -184,7 +178,9 @@ public class TileTracker {
     }
 
     public int[][] getTileGrid() {
+
         return tileGrid;
+
     }
 
 }
