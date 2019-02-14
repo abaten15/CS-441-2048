@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (power == 9) {
             imageView.setImageResource(R.drawable.greentile);
         } else if (power == 10) {
-            imageView.setImageResource(R.drawable.yellowtile);
+            imageView.setImageResource(R.drawable.purpletile);
         }
     }
 
